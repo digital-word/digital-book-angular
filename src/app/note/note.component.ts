@@ -13,6 +13,7 @@ import {
 } from '../shared/models/snack-bar-data.model';
 import { catchError, finalize, of } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-note',
@@ -23,6 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
     DatePipe,
     MatProgressSpinnerModule,
     MatIconModule,
+    RouterLink,
   ],
   templateUrl: './note.component.html',
   styleUrl: './note.component.scss',

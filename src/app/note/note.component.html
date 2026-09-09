@@ -43,5 +43,11 @@
 }
 
 <section class="flex justify-end">
-  <button matButton="filled" [disabled]="loading() || error()">Add</button>
+  <button
+    matButton="filled"
+    [disabled]="loading() || error()"
+    routerLink="create-note"
+  >
+    Add
+  </button>
 </section>
