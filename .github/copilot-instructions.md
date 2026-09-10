@@ -61,6 +61,10 @@ export class ExampleService {
 
 - We will use utility classes from [Tailwind](https://tailwindcss.com/docs/installation/using-vite)
   for layout, spacing, flex, sizing, grid, typography etc.
+- **Exception - Component Grid Layout**: For controlled, responsive multi-column layouts, prefer a
+  component SCSS grid (using the `respond()` mixin) over Tailwind's grid/flex utilities. Angular's
+  view encapsulation scopes the class to the component, so every component grid uses the same
+  standard class name `grid-dba`, regardless of component.
 
 3. **Global, component, inline CSS**
 
