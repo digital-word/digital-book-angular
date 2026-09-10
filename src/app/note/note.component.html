@@ -8,7 +8,7 @@
     <p class="text-red-600">An error happened</p>
   </div>
 } @else {
-  <section class="grid-dba gap-4 items-start grow">
+  <section class="grid-dba gap-8 items-start grow overflow-auto pr-3">
     @for (note of notes(); track note.id) {
       <mat-card class="flex flex-col gap-4">
         <mat-card-header>
@@ -42,7 +42,7 @@
   </section>
 }
 
-<section class="flex justify-end">
+<section class="flex justify-end items-center min-h-12">
   <button
     matButton="filled"
     [disabled]="loading() || error()"

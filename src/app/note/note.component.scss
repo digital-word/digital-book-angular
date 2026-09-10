@@ -3,10 +3,14 @@
 
 .grid-dba {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 355px;
   align-items: stretch;
   grid-auto-flow: row;
+
+  @include mix.respond(var.$mega) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
   @include mix.respond(var.$large) {
     grid-template-columns: repeat(2, 1fr);

@@ -29,7 +29,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './note.component.html',
   styleUrl: './note.component.scss',
   host: {
-    class: 'flex flex-col gap-4 h-full',
+    class: 'flex flex-col gap-4 grow overflow-auto',
   },
 })
 export class NoteComponent implements OnInit {
