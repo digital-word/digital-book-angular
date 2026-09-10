@@ -1,4 +1,4 @@
-import { Pagination } from "./pagination.model";
+import { Pagination } from './pagination.model';
 
 export enum NoteStatus {
   DRAFT = 'draft',
@@ -12,12 +12,19 @@ export enum NotePermission {
   PUBLIC = 'public',
 }
 
-export interface NoteParam {
+export interface NoteListParam {
   page: number;
   limit: number;
   sortBy?: string;
   sortOrder?: 'ASC' | 'DESC';
   includeDeleted?: boolean;
+}
+
+export interface NoteCreateParam {
+  title: string;
+  isFavorite: boolean;
+  status: NoteStatus;
+  permissions: NotePermission;
 }
 
 export interface NoteCategory {
@@ -47,4 +54,11 @@ export interface NoteRes {
   message: string;
   timestamp: string;
   pagination: Pagination;
+}
+
+export interface NoteCreateRes {
+  success: boolean;
+  data: NoteItem;
+  message: string;
+  timestamp: string;
 }

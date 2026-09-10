@@ -1,0 +1,17 @@
+@use "../../../assets/scss/abstract/mixins" as mix;
+@use "../../../assets/scss/abstract/variables" as var;
+
+.grid-dba {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: min-content;
+  align-items: start;
+
+  @include mix.respond(var.$medium) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mix.respond(var.$small) {
+    grid-template-columns: 1fr;
+  }
+}

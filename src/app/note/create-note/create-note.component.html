@@ -1,1 +1,52 @@
-<p>create-note works!</p>
+<form [formGroup]="form" class="flex flex-col gap-4 h-full">
+  <section class="grid-dba gap-4 grow">
+    <mat-form-field
+      appearance="outline"
+      class="col-span-full w-full"
+      aria-label="title"
+    >
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" id="title" required />
+      @if (form.controls.title.hasError("required")) {
+        <mat-error>Title is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status" required>
+        @for (status of statuses; track status) {
+          <mat-option [value]="status">{{ status }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Permissions</mat-label>
+      <mat-select formControlName="permissions" required>
+        @for (permission of permissions; track permission) {
+          <mat-option [value]="permission">{{ permission }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="isFavorite" class="full-width">
+      Favorite
+    </mat-checkbox>
+  </section>
+
+  <section class="flex justify-end gap-4">
+    <button matButton type="button" routerLink="..">Cancel</button>
+    <button
+      matButton="filled"
+      type="submit"
+      [disabled]="form.invalid || loading()"
+    >
+      @if (loading()) {
+        <mat-spinner diameter="20" />
+      } @else {
+        Save
+      }
+    </button>
+  </section>
+</form>
