@@ -1,0 +1,21 @@
+<mat-drawer-container [hasBackdrop]="false" class="h-screen">
+  <mat-drawer
+    #drawer
+    [opened]="isSideNavOpen()"
+    [mode]="sideNavMode()"
+    class="text-xl"
+  >
+    <app-side-nav />
+  </mat-drawer>
+  <mat-drawer-content class="flex! flex-col">
+    <div class="flex items-center gap-x-4 border-b h-12.5 pl-3">
+      <button matIconButton class="flex!" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <h2 class="uppercase">{{ title.getTitle() }}</h2>
+    </div>
+    <main class="p-5 grow flex flex-col overflow-auto">
+      <router-outlet />
+    </main>
+  </mat-drawer-content>
+</mat-drawer-container>
