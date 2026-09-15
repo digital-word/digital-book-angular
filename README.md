@@ -1,6 +1,65 @@
-# Digital Book Angular
+# Digital Book - Angular
+
+## Description
+
+Digital Book is a comprehensive application designed to offer a rich set of features for book enthusiasts and knowledge workers. The platform provides an enjoyable reading experience with integrated tools for PDFs, search capabilities, AI-powered assistance, and note-taking functionality.
+
+This frontend application currently implements the **Notes feature** - a sophisticated note management system with rich text editing using Quill Delta format. The Notes feature includes:
+
+- Rich text editing with Quill Delta format
+- Organization with tags and categories
+- Soft deletion and favorites
+- Search capabilities
+
+As the project grows, features like Notes can evolve into independent microservices, enabling flexible scaling and deployment strategies.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.2.
+
+## Tech Stack
+
+- **Framework**: Angular
+- **Language**: TypeScript
+- **UI Components**: Angular Material
+
+## Project setup
+
+This project uses [Volta](https://volta.sh/) to automatically manage the correct Node.js version.
+
+### 1. Install prerequisites
+
+<details>
+<summary><strong>macOS / Linux (bash)</strong></summary>
+
+```bash
+# Install Volta
+$ curl https://get.volta.sh | bash
+
+# Install Angular CLI globally
+$ npm install -g firebase
+```
+
+</details>
+
+<details>
+<summary><strong>Windows (PowerShell / cmd)</strong></summary>
+
+```powershell
+# Install Volta
+> winget install Volta.Volta
+
+# Install Angular CLI globally
+> npm install -g firebase
+```
+
+</details>
+
+### 2. Install dependencies
+
+Open a new terminal so Volta picks up the Node version pinned in `package.json`, then run:
+
+```bash
+$ npm install
+```
 
 ## Development server
 
@@ -8,22 +67,6 @@ To start a local development server, run:
 
 ```bash
 ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
 ```
 
 ## Building
@@ -57,9 +100,3 @@ For end-to-end (e2e) testing, run:
 ```bash
 ng e2e
 ```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
