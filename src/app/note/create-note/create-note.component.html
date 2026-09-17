@@ -6,7 +6,13 @@
       aria-label="title"
     >
       <mat-label>Title</mat-label>
-      <input matInput formControlName="title" id="title" required />
+      <input
+        matInput
+        formControlName="title"
+        id="title"
+        required
+        aria-label="Title"
+      />
       @if (form.controls.title.hasError("required")) {
         <mat-error>Title is required</mat-error>
       }

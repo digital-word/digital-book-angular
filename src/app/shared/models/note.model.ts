@@ -1,5 +1,3 @@
-import { Pagination } from './pagination.model';
-
 export enum NoteStatus {
   DRAFT = 'draft',
   PUBLISHED = 'published',
@@ -46,19 +44,4 @@ export interface NoteItem {
   updatedAt: string;
   tags: NoteTag[];
   categories: NoteCategory[];
-}
-
-export interface NoteRes {
-  success: boolean;
-  data: NoteItem[];
-  message: string;
-  timestamp: string;
-  pagination: Pagination;
-}
-
-export interface NoteCreateRes {
-  success: boolean;
-  data: NoteItem;
-  message: string;
-  timestamp: string;
 }

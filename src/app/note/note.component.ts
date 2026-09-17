@@ -34,11 +34,10 @@ import { RouterLink } from '@angular/router';
 })
 export class NoteComponent implements OnInit {
   private readonly noteService = inject(NoteService);
+  private readonly matSnackBar = inject(MatSnackBar);
   readonly notes = this.noteService.notes;
   readonly loading = signal(false);
   readonly error = signal(false);
-
-  constructor(private readonly matSnackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.loading.set(true);

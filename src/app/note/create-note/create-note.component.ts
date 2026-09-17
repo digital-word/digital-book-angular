@@ -13,7 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { catchError, finalize, map, of, tap } from 'rxjs';
+import { catchError, finalize, of, tap } from 'rxjs';
 import { NoteService } from '../note.service';
 import { NotePermission, NoteStatus } from '../../shared/models/note.model';
 import { SnackBarComponent } from '../../shared/components/snack-bar/snack-bar.component';

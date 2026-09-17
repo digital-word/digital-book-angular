@@ -3,14 +3,13 @@ import { inject, Injectable, signal } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import {
   NoteCreateParam,
-  NoteCreateRes,
   NoteItem,
   NoteListParam,
-  NoteRes,
 } from '../shared/models/note.model';
+import { ListRes, DetailsRes } from '../shared/models/response.model';
 import { environment } from '../../environments/environment';
 
-const API_ENDPOINT = `${environment.apiUrl}/notes`;
+const NOTES_ENDPOINT = `${environment.apiUrl}/notes`;
 
 @Injectable({
   providedIn: 'root',
@@ -21,9 +20,9 @@ export class NoteService {
   private readonly _notes = signal<NoteItem[]>([]);
   notes = this._notes.asReadonly();
 
-  loadNotes(params: NoteListParam): Observable<NoteRes> {
+  loadNotes(params: NoteListParam): Observable<ListRes<NoteItem>> {
     return this.httpClient
-      .get<NoteRes>(API_ENDPOINT, { params: { ...params } })
+      .get<ListRes<NoteItem>>(NOTES_ENDPOINT, { params: { ...params } })
       .pipe(
         tap((response) => {
           console.log(response);
@@ -32,7 +31,7 @@ export class NoteService {
       );
   }
 
-  storeNote(params: NoteCreateParam): Observable<NoteCreateRes> {
-    return this.httpClient.post<NoteCreateRes>(API_ENDPOINT, params);
+  storeNote(params: NoteCreateParam): Observable<DetailsRes<string>> {
+    return this.httpClient.post<DetailsRes<string>>(NOTES_ENDPOINT, params);
   }
 }
