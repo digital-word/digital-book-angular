@@ -1,1 +1,63 @@
-<p>login works!</p>
+<mat-icon
+  svgIcon="logo"
+  class="h-30! w-30! mb-5"
+  aria-hidden="false"
+  aria-label="Logo icon"
+/>
+<h1 class="text-2xl font-bold mb-6 uppercase">Login</h1>
+<form
+  [formGroup]="loginForm"
+  (ngSubmit)="onSubmit()"
+  class="flex flex-col gap-8"
+>
+  <div class="flex flex-col gap-4">
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        formControlName="{{ EMAIL_CONTROL }}"
+        type="email"
+        id="email"
+        aria-label="Email"
+      />
+      @if (loginForm.get(EMAIL_CONTROL)?.hasError("required")) {
+        <mat-error>Email is required</mat-error>
+      }
+
+      @if (loginForm.get(EMAIL_CONTROL)?.hasError("email")) {
+        <mat-error>Please enter a valid email</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        formControlName="{{ PASSWORD_CONTROL }}"
+        type="password"
+        id="password"
+        aria-label="Password"
+      />
+      @if (loginForm.get(PASSWORD_CONTROL)?.hasError("required")) {
+        <mat-error>Password is required</mat-error>
+      }
+
+      @if (loginForm.get(PASSWORD_CONTROL)?.hasError("minlength")) {
+        <mat-error>Password must be at least 6 characters long</mat-error>
+      }
+    </mat-form-field>
+  </div>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="loginForm.invalid"
+  >
+    @if (loading()) {
+      <mat-spinner diameter="20" />
+    } @else {
+      Login
+    }
+  </button>
+</form>

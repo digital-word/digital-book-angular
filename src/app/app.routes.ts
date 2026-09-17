@@ -5,6 +5,7 @@ import { noteRoutes } from './note/note.routes';
 import { authRoutes } from './auth/auth.routes';
 import { LayoutComponent } from './layout/layout.component';
 import { AuthComponent } from './auth/auth.component';
+import { authGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
   {
@@ -15,6 +16,7 @@ export const routes: Routes = [
   {
     path: 'secure',
     component: LayoutComponent,
+    canActivateChild: [authGuard],
     children: [
       {
         path: '',

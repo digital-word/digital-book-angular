@@ -9,6 +9,8 @@ import {
   provideAppVersion,
 } from './app-json-data';
 import { version, name, devDependencies } from '../../package.json';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { authInterceptor } from './auth/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,6 +19,7 @@ export const appConfig: ApplicationConfig = {
     provideAppName(name),
     provideAppVersion(version),
     provideAngularCLIVersion(devDependencies['@angular/cli']),
+    provideHttpClient(withInterceptors([authInterceptor])),
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
       useValue: {
