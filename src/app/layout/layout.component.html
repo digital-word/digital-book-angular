@@ -12,7 +12,10 @@
       <button matIconButton class="flex!" (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <h2 class="uppercase">{{ title.getTitle() }}</h2>
+      <h2 class="uppercase grow">{{ title.getTitle() }}</h2>
+      <button matIconButton class="flex!" (click)="onLogout()">
+        <mat-icon>logout</mat-icon>
+      </button>
     </div>
     <main class="p-5 grow flex flex-col overflow-auto">
       <router-outlet />

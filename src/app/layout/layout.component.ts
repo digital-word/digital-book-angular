@@ -5,13 +5,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDrawerMode, MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { SideNavComponent } from '../side-nav/side-nav.component';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 import {
   BreakpointService,
   BreakpointCategory,
 } from '../shared/services/breakpoint.service';
 import { Title } from '@angular/platform-browser';
+import { LocalStorageService } from '../shared/services/local-storage.service';
 
 @Component({
   selector: 'app-layout',
@@ -30,6 +31,8 @@ import { Title } from '@angular/platform-browser';
   },
 })
 export class LayoutComponent {
+  private readonly localStorageService = inject(LocalStorageService);
+  private readonly router = inject(Router);
   readonly title = inject(Title);
   private readonly breakpointService = inject(BreakpointService);
 
@@ -40,4 +43,9 @@ export class LayoutComponent {
     this.isBelowResponsiveBreakpoint() ? 'over' : 'side',
   );
   isSideNavOpen = computed(() => !this.isBelowResponsiveBreakpoint());
+
+  onLogout() {
+    this.localStorageService.delUser();
+    this.router.navigate(['/']);
+  }
 }
