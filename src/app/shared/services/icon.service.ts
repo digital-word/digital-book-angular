@@ -32,6 +32,10 @@ export class IconService {
       path: 'icon/logo.svg',
     },
     {
+      name: 'logo-current-color',
+      path: 'icon/logo-current-color.svg',
+    },
+    {
       name: 'error',
       path: 'icon/error.svg',
     },
