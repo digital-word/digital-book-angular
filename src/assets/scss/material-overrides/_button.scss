@@ -1,9 +1,22 @@
+@use "..//abstract/mixins" as mix;
+@use "../abstract/variables" as var;
 @use "@angular/material" as mat;
 
 @mixin button-config() {
   @include mat.icon-button-overrides(
     (
       container-shape: none,
+      // we need this to stop auto scroll horizontally
+      touch-target-size: 40px,
     )
   );
+
+  @include mix.respond(var.$small) {
+    @include mat.icon-button-overrides(
+      (
+        touch-target-size: 48px,
+        state-layer-size: 48px,
+      )
+    );
+  }
 }
