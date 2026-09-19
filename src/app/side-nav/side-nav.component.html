@@ -6,9 +6,8 @@
     <li>
       <a
         class="p-2 rounded-none hover:bg-gray-500 focus:outline-indigo-300 w-full flex items-center gap-x-2"
-        routerLink="/secure/dashboard"
+        [routerLink]="paths.dashboard"
         routerLinkActive="bg-gray-400"
-        [routerLinkActiveOptions]="{ exact: true }"
       >
         <mat-icon
           svgIcon="dashboard"
@@ -21,12 +20,13 @@
     <li>
       <a
         class="p-2 rounded-none hover:bg-gray-500 focus:outline-indigo-300 w-full flex items-center gap-x-2"
-        routerLink="/secure/project-details"
+        [routerLink]="paths.projectDetails"
         routerLinkActive="bg-gray-400"
       >
         <mat-icon
           svgIcon="details"
           aria-hidden="false"
+          project-details
           aria-label="Details Project SVG icon"
         />
         Project Details
@@ -35,7 +35,7 @@
     <li>
       <a
         class="p-2 rounded-none hover:bg-gray-500 focus:outline-indigo-300 w-full flex items-center gap-x-2"
-        routerLink="/secure/note"
+        [routerLink]="paths.note"
         routerLinkActive="bg-gray-400"
       >
         <mat-icon

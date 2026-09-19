@@ -26,6 +26,7 @@ import {
 import { Router } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LocalStorageService } from '../../shared/services/local-storage.service';
+import { PATH_DASHBOARD } from '../../shared/consts/paths';
 
 @Component({
   selector: 'app-login',
@@ -81,7 +82,7 @@ export class LoginComponent implements OnInit {
           tap((res) => {
             if (res.success) {
               this.localStorageService.setUser(res.data);
-              this.router.navigate(['/secure/dashboard']);
+              this.router.navigate([PATH_DASHBOARD]);
             }
           }),
           catchError((err) => {

@@ -21,6 +21,7 @@ import {
   SnackBarData,
   SnackBarPanelClass,
 } from '../../shared/models/snack-bar-data.model';
+import { PATH_NOTE } from '../../shared/consts/paths';
 
 @Component({
   selector: 'app-create-note',
@@ -74,7 +75,7 @@ export class CreateNoteComponent {
       .pipe(
         tap((res) => {
           if (res.success) {
-            this.router.navigate(['/note']);
+            this.router.navigate([PATH_NOTE]);
           }
         }),
         catchError((err) => {

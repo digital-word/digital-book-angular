@@ -6,6 +6,7 @@ import { authRoutes } from './auth/auth.routes';
 import { LayoutComponent } from './layout/layout.component';
 import { AuthComponent } from './auth/auth.component';
 import { authGuard } from './auth/auth.guard';
+import { PATH_SEGMENTS } from './shared/consts/paths';
 
 export const routes: Routes = [
   {
@@ -20,22 +21,22 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: PATH_SEGMENTS.DASHBOARD,
         pathMatch: 'full',
       },
       {
-        path: 'dashboard',
+        path: PATH_SEGMENTS.DASHBOARD,
         component: DashboardComponent,
         pathMatch: 'full',
         title: 'Dashboard',
       },
       {
-        path: 'project-details',
+        path: PATH_SEGMENTS.PROJECT_DETAILS,
         component: ProjectDetailsComponent,
         title: 'Project Details',
       },
       {
-        path: 'note',
+        path: PATH_SEGMENTS.NOTE,
         children: noteRoutes,
       },
     ],
