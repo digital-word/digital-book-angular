@@ -14,6 +14,7 @@
     "sonarsource.sonarlint-vscode",
     "streetsidesoftware.code-spell-checker",
     "syler.sass-indented",
-    "wesbos.theme-cobalt2"
+    "wesbos.theme-cobalt2",
+    "gitlens.git"
   ]
 }
