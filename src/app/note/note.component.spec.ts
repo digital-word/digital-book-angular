@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { MatIconTestingModule } from '@angular/material/icon/testing';
 
 import { NoteComponent } from './note.component';
 
@@ -8,9 +10,9 @@ describe('NoteComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NoteComponent]
-    })
-    .compileComponents();
+      imports: [NoteComponent, MatIconTestingModule],
+      providers: [provideRouter([])],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(NoteComponent);
     component = fixture.componentInstance;

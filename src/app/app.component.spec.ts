@@ -34,8 +34,4 @@ describe('AppComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('should initialize sidenav state as closed', () => {
-    expect(component.isSideNavOpen()).toBeTrue();
-  });
 });

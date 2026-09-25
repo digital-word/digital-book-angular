@@ -2,6 +2,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProjectDetailsComponent } from './project-details.component';
 import { environment } from '../../environments/environment';
+import {
+  provideAngularCLIVersion,
+  provideAppName,
+  provideAppVersion,
+} from '../app-json-data';
 
 describe('ProjectDetailsComponent', () => {
   let component: ProjectDetailsComponent;
@@ -9,7 +14,12 @@ describe('ProjectDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProjectDetailsComponent]
+      imports: [ProjectDetailsComponent],
+      providers: [
+        provideAppName('digital-book-angular'),
+        provideAppVersion('0.0.1'),
+        provideAngularCLIVersion('^21.2.7'),
+      ],
     })
     .compileComponents();
 

@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { MatIconTestingModule } from '@angular/material/icon/testing';
 
 import { SideNavComponent } from './side-nav.component';
 import { TITLE } from '../app.const';
@@ -9,7 +11,8 @@ describe('SideNavComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SideNavComponent],
+      imports: [SideNavComponent, MatIconTestingModule],
+      providers: [provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SideNavComponent);
@@ -23,7 +26,7 @@ describe('SideNavComponent', () => {
 
   it('should render title', () => {
     const titleElement = fixture.nativeElement.querySelector(
-      'mat-drawer h1',
+      'header h1',
     ) as HTMLHeadingElement;
 
     expect(component.projectTitle).toBe(TITLE);

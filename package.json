@@ -9,7 +9,7 @@
     "build:staging": "ng build --configuration staging",
     "build:production": "ng build --configuration production",
     "deploy": "npm run build && firebase deploy --only hosting",
-    "test": "ng test"
+    "test": "CHROME_BIN=${CHROME_BIN:-/snap/bin/chromium} ng test --watch=false --browsers=ChromeHeadless"
   },
   "private": true,
   "dependencies": {
