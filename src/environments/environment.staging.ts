@@ -3,7 +3,7 @@ import { Environment } from './environment.model';
 
 export const environment: Environment = {
   ...environmentCommon,
-  apiUrl: 'http://my-staging-url',
+  apiUrl: 'https://us-central1-digital-book-fbaa0.cloudfunctions.net/api',
   env: 'staging',
   apiKey: 'AIzaSyB1a2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q',
   authDomain: 'my-project.firebaseapp.com',
