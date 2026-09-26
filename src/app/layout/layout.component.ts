@@ -44,6 +44,8 @@ export class LayoutComponent {
   );
   isSideNavOpen = computed(() => !this.isBelowResponsiveBreakpoint());
 
+  hasBackground = computed(() => this.sideNavMode() === 'over');
+
   onLogout() {
     this.localStorageService.delUser();
     this.router.navigate(['/']);
