@@ -42,6 +42,12 @@
   </section>
 }
 
+<mat-paginator
+  [length]="paginationRes()?.total"
+  [pageSize]="paginationRes()?.limit"
+  (page)="onChangePage($event)"
+/>
+
 <section class="flex justify-end items-center min-h-12">
   <button
     matButton="filled"

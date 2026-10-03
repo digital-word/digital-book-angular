@@ -1,11 +1,11 @@
-import { Pagination } from './pagination.model';
+import { PaginationRes } from './pagination.model';
 
 export interface ListRes<T> {
   success: boolean;
   data: T[];
   message: string;
   timestamp: string;
-  pagination: Pagination;
+  pagination: PaginationRes;
 }
 
 export interface DetailsRes<T> {
