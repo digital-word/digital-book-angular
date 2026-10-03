@@ -20,6 +20,7 @@ import {
 export class SideNavComponent {
   projectTitle = PROJECT_TITLE;
   paths = {
+    home: '/',
     dashboard: `/${PATH_DASHBOARD}`,
     projectDetails: `/${PATH_PROJECT_DETAILS}`,
     note: `/${PATH_NOTE}`,
