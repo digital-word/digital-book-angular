@@ -26,8 +26,8 @@ describe('SideNavComponent', () => {
 
   it('should render title', () => {
     const titleElement = fixture.nativeElement.querySelector(
-      'header h1',
-    ) as HTMLHeadingElement;
+      'header a',
+    ) as HTMLAnchorElement;
 
     expect(component.projectTitle).toBe(TITLE);
     expect(titleElement.textContent?.trim()).toBe(TITLE);
