@@ -7,6 +7,7 @@ import { DatePipe } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackBarComponent } from '../shared/components/snack-bar/snack-bar.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 import {
   SnackBarData,
   SnackBarPanelClass,
@@ -15,17 +16,21 @@ import { catchError, finalize, of } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { NoteListParam } from '../shared/models/note.model';
+import { NoteListParam, SortBy, SortOrder } from '../shared/models/note.model';
 import { LoggerService } from '../shared/services/logger/logger.service';
+import { MatSelectChange, MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-note',
   imports: [
+    ReactiveFormsModule,
     MatCardModule,
     MatButtonModule,
     MatChipsModule,
     DatePipe,
     MatProgressSpinnerModule,
+    MatSelectModule,
     MatIconModule,
     RouterLink,
     MatPaginatorModule,
@@ -40,20 +45,45 @@ export class NoteComponent implements OnInit {
   params = signal<NoteListParam>({
     page: 0,
     limit: 8,
+    sortOrder: SortOrder.DESC,
+    sortBy: SortBy.CREATED_AT,
   });
 
   private readonly noteService = inject(NoteService);
   private readonly matSnackBar = inject(MatSnackBar);
   private readonly logger = inject(LoggerService);
+  readonly orderBy = [
+    {
+      value: SortBy.CREATED_AT,
+      label: 'Created At',
+    },
+    {
+      value: SortBy.TITLE,
+      label: 'Title',
+    },
+    {
+      value: SortBy.UPDATED_AT,
+      label: 'Updated At',
+    },
+  ];
+
+  readonly sortOrder = [
+    {
+      value: SortOrder.DESC,
+      label: 'Desc',
+    },
+    {
+      value: SortOrder.ASC,
+      label: 'Asc',
+    },
+  ];
+
   readonly notes = this.noteService.notes;
   readonly paginationRes = this.noteService.paginationRes;
   readonly loading = signal(false);
   readonly error = signal(false);
 
   ngOnInit(): void {
-    this.loading.set(true);
-    this.error.set(false);
-
     this.logger.log(
       '[component] ngOnInit, paginationRes',
       this.paginationRes(),
@@ -65,13 +95,13 @@ export class NoteComponent implements OnInit {
 
   onChangePage(page: PageEvent) {
     this.logger.log('[component] onChangePage, page', page);
-    this.loading.set(true);
-    this.error.set(false);
-
     this.handleLoadPage(page.pageIndex).subscribe();
   }
 
   handleLoadPage(pageIndex: number) {
+    this.loading.set(true);
+    this.error.set(false);
+
     this.logger.log('[component] handleLoadPage, pageIndex', pageIndex);
 
     this.params.update((curr) => ({ ...curr, page: pageIndex }));
@@ -103,5 +133,17 @@ export class NoteComponent implements OnInit {
       data: snackData,
       panelClass: SnackBarPanelClass.ERROR,
     });
+  }
+
+  onSortByChange(event: MatSelectChange<SortBy>) {
+    this.logger.log('[component] onSortByChange, event.value', event.value);
+    this.params.update((curr) => ({ ...curr, sortBy: event.value }));
+    this.handleLoadPage(0).subscribe();
+  }
+
+  onSortOrderChange(event: MatSelectChange<SortOrder>) {
+    this.logger.log('[component] onSortOrderChange, event.value', event.value);
+    this.params.update((curr) => ({ ...curr, sortOrder: event.value }));
+    this.handleLoadPage(0).subscribe();
   }
 }

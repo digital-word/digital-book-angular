@@ -8,8 +8,8 @@
       <mat-label>Title</mat-label>
       <input
         matInput
-        formControlName="title"
-        id="title"
+        [formControlName]="TITLE_CONTROL"
+        [id]="TITLE_CONTROL"
         required
         aria-label="Title"
       />
@@ -20,7 +20,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Status</mat-label>
-      <mat-select formControlName="status" required>
+      <mat-select [formControlName]="STATUS_CONTROL" required>
         @for (status of statuses; track status) {
           <mat-option [value]="status">{{ status }}</mat-option>
         }
@@ -29,14 +29,14 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Permissions</mat-label>
-      <mat-select formControlName="permissions" required>
+      <mat-select [formControlName]="PERMISSION_CONTROL" required>
         @for (permission of permissions; track permission) {
           <mat-option [value]="permission">{{ permission }}</mat-option>
         }
       </mat-select>
     </mat-form-field>
 
-    <mat-checkbox formControlName="isFavorite" class="full-width">
+    <mat-checkbox [formControlName]="IS_FAVORITE_CONTROL" class="full-width">
       Favorite
     </mat-checkbox>
   </section>

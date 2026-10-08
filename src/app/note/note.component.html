@@ -1,3 +1,29 @@
+<section class="flex gap-x-3 flex-wrap">
+  <mat-form-field>
+    <mat-label>Order by</mat-label>
+    <mat-select
+      [value]="params().sortBy"
+      (selectionChange)="onSortByChange($event)"
+    >
+      @for (option of orderBy; track option.value) {
+        <mat-option [value]="option.value">{{ option.label }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Sort order</mat-label>
+    <mat-select
+      [value]="params().sortOrder"
+      (selectionChange)="onSortOrderChange($event)"
+    >
+      @for (option of sortOrder; track option.value) {
+        <mat-option [value]="option.value">{{ option.label }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</section>
+
 @if (loading()) {
   <div class="grow flex justify-center items-center">
     <mat-spinner />
@@ -13,9 +39,9 @@
       <mat-card class="flex flex-col gap-4">
         <mat-card-header>
           <mat-card-title>{{ note.title }}</mat-card-title>
-          <mat-card-subtitle>{{
-            note.createdAt | date: "short"
-          }}</mat-card-subtitle>
+          <mat-card-subtitle>
+            {{ note.createdAt | date }}
+          </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content class="grow flex! flex-col gap-y-4">
           <div class="flex gap-x-2">

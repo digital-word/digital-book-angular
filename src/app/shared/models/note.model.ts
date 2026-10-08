@@ -10,11 +10,21 @@ export enum NotePermission {
   PUBLIC = 'public',
 }
 
+export enum SortOrder {
+  ASC = 'ASC',
+  DESC = 'DESC',
+}
+
+export enum SortBy {
+  TITLE = 'title',
+  UPDATED_AT = 'updatedAt',
+  CREATED_AT = 'createdAt',
+}
 export interface NoteListParam {
   page: number;
   limit: number;
-  sortBy?: string;
-  sortOrder?: 'ASC' | 'DESC';
+  sortBy: SortBy;
+  sortOrder: SortOrder;
   includeDeleted?: boolean;
 }
 
@@ -22,7 +32,7 @@ export interface NoteCreateParam {
   title: string;
   isFavorite: boolean;
   status: NoteStatus;
-  permissions: NotePermission;
+  permission: NotePermission;
 }
 
 export interface NoteCategory {

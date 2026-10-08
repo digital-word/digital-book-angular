@@ -44,6 +44,11 @@ import { PATH_NOTE } from '../../shared/consts/paths';
   },
 })
 export class CreateNoteComponent {
+  readonly TITLE_CONTROL = 'title';
+  readonly IS_FAVORITE_CONTROL = 'isFavorite';
+  readonly STATUS_CONTROL = 'status';
+  readonly PERMISSION_CONTROL = 'permission';
+
   private readonly formBuilder = inject(FormBuilder);
   private readonly noteService = inject(NoteService);
   private readonly router = inject(Router);
@@ -56,10 +61,10 @@ export class CreateNoteComponent {
   readonly error = signal(false);
 
   readonly form = this.formBuilder.nonNullable.group({
-    title: ['', Validators.required],
-    isFavorite: [false],
-    status: [NoteStatus.DRAFT, Validators.required],
-    permissions: [NotePermission.PRIVATE, Validators.required],
+    [this.TITLE_CONTROL]: ['', Validators.required],
+    [this.IS_FAVORITE_CONTROL]: [false],
+    [this.STATUS_CONTROL]: [NoteStatus.DRAFT, Validators.required],
+    [this.PERMISSION_CONTROL]: [NotePermission.PRIVATE, Validators.required],
   });
 
   onSubmit(): void {
