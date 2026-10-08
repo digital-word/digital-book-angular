@@ -11,6 +11,7 @@ import {
 import { version, name, devDependencies } from '../../package.json';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './auth/auth.interceptor';
+import { DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,6 +21,10 @@ export const appConfig: ApplicationConfig = {
     provideAppVersion(version),
     provideAngularCLIVersion(devDependencies['@angular/cli']),
     provideHttpClient(withInterceptors([authInterceptor])),
+    {
+      provide: DATE_PIPE_DEFAULT_OPTIONS,
+      useValue: { dateFormat: 'd/M/yyyy' },
+    },
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
       useValue: {
