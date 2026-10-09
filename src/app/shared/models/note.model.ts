@@ -32,7 +32,7 @@ export interface NoteCreateParam {
   title: string;
   isFavorite: boolean;
   status: NoteStatus;
-  permission: NotePermission;
+  permissions: NotePermission;
 }
 
 export interface NoteCategory {

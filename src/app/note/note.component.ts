@@ -138,12 +138,12 @@ export class NoteComponent implements OnInit {
   onSortByChange(event: MatSelectChange<SortBy>) {
     this.logger.log('[component] onSortByChange, event.value', event.value);
     this.params.update((curr) => ({ ...curr, sortBy: event.value }));
-    this.handleLoadPage(0).subscribe();
+    this.handleLoadPage(this.params().page).subscribe();
   }
 
   onSortOrderChange(event: MatSelectChange<SortOrder>) {
     this.logger.log('[component] onSortOrderChange, event.value', event.value);
     this.params.update((curr) => ({ ...curr, sortOrder: event.value }));
-    this.handleLoadPage(0).subscribe();
+    this.handleLoadPage(this.params().page).subscribe();
   }
 }
