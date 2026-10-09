@@ -47,7 +47,7 @@ export class CreateNoteComponent {
   readonly TITLE_CONTROL = 'title';
   readonly IS_FAVORITE_CONTROL = 'isFavorite';
   readonly STATUS_CONTROL = 'status';
-  readonly PERMISSION_CONTROL = 'permission';
+  readonly PERMISSION_CONTROL = 'permissions';
 
   private readonly formBuilder = inject(FormBuilder);
   private readonly noteService = inject(NoteService);
@@ -80,7 +80,7 @@ export class CreateNoteComponent {
       .pipe(
         tap((res) => {
           if (res.success) {
-            this.router.navigate([PATH_NOTE]);
+            void this.router.navigate([PATH_NOTE]);
           }
         }),
         catchError((err) => {

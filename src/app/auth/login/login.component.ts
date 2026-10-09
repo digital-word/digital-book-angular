@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.localStorageService.getUser()) {
-      this.router.navigate(['/secure']);
+      void this.router.navigate(['/secure']);
     }
   }
 
@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
           tap((res) => {
             if (res.success) {
               this.localStorageService.setUser(res.data);
-              this.router.navigate([PATH_DASHBOARD]);
+              void this.router.navigate([PATH_DASHBOARD]);
             }
           }),
           catchError((err) => {

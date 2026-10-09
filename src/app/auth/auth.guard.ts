@@ -9,7 +9,7 @@ export const authGuard: CanActivateChildFn = (route, state) => {
   if (localStorageService.getUser()) {
     return true;
   } else {
-    router.navigate(['/']);
+    void router.navigate(['/']);
     return false;
   }
 };

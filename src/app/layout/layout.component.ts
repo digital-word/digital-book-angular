@@ -48,6 +48,6 @@ export class LayoutComponent {
 
   onLogout() {
     this.localStorageService.delUser();
-    this.router.navigate(['/']);
+    void this.router.navigate(['/']);
   }
 }
