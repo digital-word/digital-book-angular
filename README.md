@@ -15,6 +15,17 @@ As the project grows, features like Notes can evolve into independent microservi
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.2.
 
+### Access
+
+https://digital-book-fbaa0.firebaseapp.com/
+
+**User**
+Email: test1@email.com
+Password: test12026
+
+**Back End**
+https://github.com/digital-word/digital-book-nest
+
 ## Tech Stack
 
 - **Framework**: Angular
