@@ -12,7 +12,15 @@ import {
   BreakpointCategory,
 } from '../shared/services/breakpoint.service';
 import { Title } from '@angular/platform-browser';
-import { LocalStorageService } from '../shared/services/local-storage.service';
+import { AuthService } from '../auth/auth.service';
+import { catchError, of, tap } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import {
+  SnackBarData,
+  SnackBarPanelClass,
+} from '../shared/models/snack-bar-data.model';
+import { SnackBarComponent } from '../shared/components/snack-bar/snack-bar.component';
+import { LoggerService } from '../shared/services/logger/logger.service';
 
 @Component({
   selector: 'app-layout',
@@ -31,8 +39,11 @@ import { LocalStorageService } from '../shared/services/local-storage.service';
   },
 })
 export class LayoutComponent {
-  private readonly localStorageService = inject(LocalStorageService);
+  private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
+  private readonly matSnackBar = inject(MatSnackBar);
+  private readonly logger = inject(LoggerService);
+
   readonly title = inject(Title);
   private readonly breakpointService = inject(BreakpointService);
 
@@ -47,7 +58,29 @@ export class LayoutComponent {
   hasBackground = computed(() => this.sideNavMode() === 'over');
 
   onLogout() {
-    this.localStorageService.delUser();
-    void this.router.navigate(['/']);
+    this.authService
+      .logout()
+      .pipe(
+        tap(() => {
+          void this.router.navigate(['/']);
+        }),
+        catchError((err) => {
+          this.logger.error('[component] onLogout, error', err);
+
+          const snackData: SnackBarData = {
+            message: `There has been an error ${err.error.message}`,
+            icon: 'error',
+            matSnackBar: this.matSnackBar,
+          };
+
+          this.matSnackBar.openFromComponent(SnackBarComponent, {
+            data: snackData,
+            panelClass: SnackBarPanelClass.ERROR,
+          });
+
+          return of();
+        }),
+      )
+      .subscribe();
   }
 }

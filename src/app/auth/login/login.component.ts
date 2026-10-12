@@ -56,7 +56,15 @@ export class LoginComponent implements OnInit {
   readonly loading = signal(false);
 
   ngOnInit(): void {
-    if (this.localStorageService.getUser()) {
+    const user = this.localStorageService.getUser();
+
+    if (
+      user &&
+      !(
+        this.authService.isTokenExpired(user) &&
+        this.authService.isSessionIdle(user)
+      )
+    ) {
       void this.router.navigate(['/secure']);
     }
   }
